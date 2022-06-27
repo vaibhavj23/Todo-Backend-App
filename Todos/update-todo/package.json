@@ -1,0 +1,17 @@
+{
+  "name": "update-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "entryFunction.js",
+  "dependencies": {
+    "uuid": "^8.1.0"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.856.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vaibhav",
+  "license": "ISC"
+}

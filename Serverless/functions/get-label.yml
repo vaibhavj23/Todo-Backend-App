@@ -1,0 +1,20 @@
+handler: Labels/get-label/entryFunction.handler
+name: ${self:provider.stage}-get-label
+description: aws:states:opt-in
+timeout: 29
+memorySize: 256
+package:
+  include:
+    - Tasks/get-label/*.*
+    - Tasks/get-label/node_modules/**
+environment:
+  LabelTable: Label_${self:provider.stage}
+events:
+  - http:
+      path: v1/todoapp/user/{userId}/label/{labelId}
+      method: get
+      integration: lambda-proxy
+  - http:
+      path: v1/todoapp/user/{userId}/label
+      method: get
+      integration: lambda-proxy

@@ -1,0 +1,20 @@
+handler: Labels/update-label/entryFunction.handler
+name: ${self:provider.stage}-update-label
+description: aws:states:opt-in
+timeout: 29
+memorySize: 256
+package:
+  include:
+    - Tasks/update-label/*.*
+    - Tasks/update-label/node_modules/**
+environment:
+  LabelTable: Label_${self:provider.stage}
+events:
+  - http:
+      path: v1/todoapp/user/{userId}/label/{labelId}
+      method: post
+      integration: lambda-proxy
+  - http:
+      path: v1/todoapp/user/{userId}/label
+      method: post
+      integration: lambda-proxy

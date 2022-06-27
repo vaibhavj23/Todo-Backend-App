@@ -1,0 +1,16 @@
+handler: Labels/delete-label/entryFunction.handler
+name: ${self:provider.stage}-delete-label
+description: aws:states:opt-in
+timeout: 29
+memorySize: 256
+package:
+  include:
+    - Tasks/delete-label/*.*
+    - Tasks/delete-label/node_modules/**
+environment:
+  LabelTable: Label_${self:provider.stage}
+events:
+  - http:
+      path: v1/todoapp/user/{userId}/label/{labelId}
+      method: delete
+      integration: lambda-proxy

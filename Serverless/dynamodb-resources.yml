@@ -1,0 +1,35 @@
+Resources:
+  TodoTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Todo_${self:provider.stage}
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+        - AttributeName: todoId
+          KeyType: RANGE
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: todoId
+          AttributeType: S
+      ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+  LabelTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Label_${self:provider.stage}
+      KeySchema:
+        - AttributeName: userId
+          KeyType: HASH
+        - AttributeName: labelId
+          KeyType: RANGE
+      AttributeDefinitions:
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: labelId
+          AttributeType: S
+      ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

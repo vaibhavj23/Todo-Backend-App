@@ -1,0 +1,20 @@
+handler: Todos/update-todo/entryFunction.handler
+name: ${self:provider.stage}-update-todo
+description: aws:states:opt-in
+timeout: 29
+memorySize: 256
+package:
+  include:
+    - Todos/update-todo/*.*
+    - Todos/update-todo/node_modules/**
+environment:
+  TodoTable: Todo_${self:provider.stage}
+events:
+  - http:
+      path: v1/todoapp/user/{userId}/todo/{todoId}
+      method: post
+      integration: lambda-proxy
+  - http:
+      path: v1/todoapp/user/{userId}/todo
+      method: post
+      integration: lambda-proxy

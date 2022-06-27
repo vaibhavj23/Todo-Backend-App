@@ -1,0 +1,20 @@
+handler: Todos/get-todo/entryFunction.handler
+name: ${self:provider.stage}-get-todo
+description: aws:states:opt-in
+timeout: 29
+memorySize: 256
+package:
+  include:
+    - Todos/get-todo/*.*
+    - Todos/get-todo/node_modules/**
+environment:
+  TodoTable: Todo_${self:provider.stage}
+events:
+  - http:
+      path: v1/todoapp/user/{userId}/todo/{todoId}
+      method: get
+      integration: lambda-proxy
+  - http:
+      path: v1/todoapp/user/{userId}/todo
+      method: get
+      integration: lambda-proxy

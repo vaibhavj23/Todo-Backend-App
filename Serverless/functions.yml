@@ -1,0 +1,7 @@
+functions:
+  update-todo: ${file(Serverless/functions/update-todo.yml)}
+  delete-todo: ${file(Serverless/functions/delete-todo.yml)}
+  get-todo: ${file(Serverless/functions/get-todo.yml)}
+  update-label: ${file(Serverless/functions/update-label.yml)}
+  delete-label: ${file(Serverless/functions/delete-label.yml)}
+  get-label: ${file(Serverless/functions/get-label.yml)}
