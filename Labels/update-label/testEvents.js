@@ -4,8 +4,8 @@ createLabelRequest = {
     body: {
         "labelName": "Morning ",
         "description": "Morning Activities"
-
-    }
+    },
+    method: 'POST'
 }
 
 //to update label
@@ -14,6 +14,6 @@ updateLabelRequest = {
     body: {
         "labelName": "Morning ",
         "description": "Morning Activities 2"
-
-    }
+    },
+    method: 'POST'
 }
